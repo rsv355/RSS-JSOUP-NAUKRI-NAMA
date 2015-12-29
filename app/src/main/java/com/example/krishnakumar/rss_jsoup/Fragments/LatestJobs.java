@@ -9,7 +9,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.krishnakumar.rss_jsoup.CustomAdapter;
 import com.example.krishnakumar.rss_jsoup.R;
@@ -54,7 +56,6 @@ public class LatestJobs extends Fragment {
 
         final ListView listView = (ListView) convertView.findViewById(R.id.listView);
 
-
         new AsyncTask<Void, Void, Void>() {
             @Override
             protected void onPreExecute() {
@@ -80,7 +81,6 @@ public class LatestJobs extends Fragment {
 
             }
         }.execute();
-
 
         return convertView;
     }
@@ -119,10 +119,24 @@ public class LatestJobs extends Fragment {
                     item.setImgUrl(el.attr("src"));
                 }
 
+                String contentElements = link.getElementsByTag("content:encoded").text();
+
+                Document contentDoc = Jsoup.parse(contentElements);
+                //Log.e("contentElements", contentElements);
+                item.insertIntoData(contentElements);
+                Elements para = contentDoc.getElementsByTag("p");
+                for (Element el : para) {
+                    //Log.e("el value ", el.text());
+                    //item.insertIntoData(el.text());
+                    /*Elements para1 = el.getElementsByTag("strong");
+                    for(Element e2 : para1) {
+                        Log.e("e2 Text ", e2.text());
+                        Log.e("e2 value ", el.val());
+                    }*/
+                }
                 data.add(item);
-
             }
-
+            Log.e("data : ", data.toString());
 
         } catch (IOException e) {
             e.printStackTrace();

@@ -1,13 +1,17 @@
 package com.example.krishnakumar.rss_jsoup;
 
 import android.content.Context;
+import android.content.Intent;
+import android.sax.RootElement;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.drawable.GlideDrawable;
@@ -51,16 +55,18 @@ public class CustomAdapter extends BaseAdapter {
         TextView postTitleLabel,txtPubDate;
         ImageView imgProfile;
         ProgressBar loading;
+        RelativeLayout relativeParent;
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         final ViewHolder holder;
 
         if(convertView == null){
             holder = new ViewHolder();
             convertView = inflater.inflate(R.layout.postitem, parent, false);
 
+            holder.relativeParent = (RelativeLayout) convertView.findViewById(R.id.relativeParent);
             holder.loading = (ProgressBar) convertView.findViewById(R.id.loading);
             holder.imgProfile = (ImageView) convertView.findViewById(R.id.postThumb);
             holder.postTitleLabel = (TextView) convertView.findViewById(R.id.postTitleLabel);
@@ -92,6 +98,20 @@ public class CustomAdapter extends BaseAdapter {
                     }
                 })
                 .into(holder.imgProfile);
+
+        holder.relativeParent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(_ctx, data.get(position).getHeadline(),Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(_ctx, DetailsActivity.class);
+                intent.putStringArrayListExtra("data", data.get(position).data);
+                intent.putExtra("headline", data.get(position).getHeadline());
+                intent.putExtra("description", data.get(position).getPublishDate());
+                intent.putExtra("imgURL", data.get(position).getImgUrl());
+                _ctx.startActivity(intent);
+
+            }
+        });
 
         return convertView;
     }
