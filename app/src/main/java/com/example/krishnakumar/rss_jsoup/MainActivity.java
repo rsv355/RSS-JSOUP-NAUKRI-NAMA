@@ -67,7 +67,6 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
     }
 
     public class MyPagerAdapter extends FragmentPagerAdapter {
