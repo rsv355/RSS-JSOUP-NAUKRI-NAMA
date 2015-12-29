@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
         pager = (ViewPager) findViewById(R.id.pager);
         adapter = new MyPagerAdapter(getSupportFragmentManager());
 
-        pager.setOffscreenPageLimit(0);
+        pager.setOffscreenPageLimit(1);
         pager.setAdapter(adapter);
         tabs.setTextColor(Color.parseColor("#ffffff"));
 
