@@ -66,7 +66,6 @@ public class MainActivity extends AppCompatActivity {
         tabs.setViewPager(pager);
 
 
-
     }
 
     public class MyPagerAdapter extends FragmentPagerAdapter {
