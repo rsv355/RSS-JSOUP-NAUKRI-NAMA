@@ -29,7 +29,7 @@ import java.util.ArrayList;
 public class LatestJobs extends Fragment {
     public ArrayList<NaukriData> data;
     private static final String ARG_URL = "URL";
-    private String  URL;
+    private String URL;
     private ProgressDialog pd;
 
     public static LatestJobs newInstance(String url) {
@@ -52,11 +52,10 @@ public class LatestJobs extends Fragment {
 
         View convertView = inflater.inflate(R.layout.tabs, container, false);
 
-        final ListView listView = (ListView)convertView.findViewById(R.id.listView);
+        final ListView listView = (ListView) convertView.findViewById(R.id.listView);
 
 
-
-        new AsyncTask<Void,Void,Void>() {
+        new AsyncTask<Void, Void, Void>() {
             @Override
             protected void onPreExecute() {
                 super.onPreExecute();
@@ -76,18 +75,17 @@ public class LatestJobs extends Fragment {
                 super.onPostExecute(aVoid);
                 pd.dismiss();
 
-                CustomAdapter adp = new CustomAdapter(getActivity(),data);
+                CustomAdapter adp = new CustomAdapter(getActivity(), data);
                 listView.setAdapter(adp);
 
             }
         }.execute();
 
 
-
         return convertView;
     }
 
-    private void call(String url){
+    private void call(String url) {
 
         Document doc;
         try {
@@ -112,7 +110,7 @@ public class LatestJobs extends Fragment {
                 item.setHeadline(link.getElementsByTag("title").text());
                 item.setPublishDate(link.getElementsByTag("pubDate").text());
 
-                String div =  link.select("description").text();
+                String div = link.select("description").text();
 
                 Document doc2 = Jsoup.parse(div);
                 Elements img = doc2.getElementsByTag("img");
@@ -122,10 +120,8 @@ public class LatestJobs extends Fragment {
                 }
 
                 data.add(item);
+
             }
-
-
-
 
 
         } catch (IOException e) {
