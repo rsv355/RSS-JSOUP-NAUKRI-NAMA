@@ -25,6 +25,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.drawable.GlideDrawable;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
+import com.example.krishnakumar.rss_jsoup.Fragments.Flipper;
 import com.example.krishnakumar.rss_jsoup.Fragments.LatestJobs;
 import com.example.krishnakumar.rss_jsoup.model.NaukriData;
 
@@ -91,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
         public Fragment getItem(int position) {
             switch (position) {
                 case 0:
-                    return LatestJobs.newInstance("https://www.naukrinama.com/feed/");
+                    return Flipper.newInstance("https://www.naukrinama.com/job-alerts/feed/");
                 case 1:
                     return LatestJobs.newInstance("https://www.naukrinama.com/government-jobs/banking-jobs/feed/");
                 case 2:
