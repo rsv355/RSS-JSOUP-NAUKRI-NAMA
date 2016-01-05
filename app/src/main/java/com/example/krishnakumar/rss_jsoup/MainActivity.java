@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
 
     public class MyPagerAdapter extends FragmentPagerAdapter {
 
-        private final String[] TITLES = { "Latest\nJobs", "Banking\nJobs", "Railways\nJobs", "UPSC\nJobs",
+        private final String[] TITLES = {"Latest\nJobs", "Banking\nJobs", "Railways\nJobs", "UPSC\nJobs",
                 "Teaching\nJobs", "Indian Army\nJobs"};
 
         public MyPagerAdapter(FragmentManager fm) {
@@ -91,32 +91,41 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public Fragment getItem(int position) {
-            switch (position) {
-                case 0:
-                    return Flipper.newInstance("https://www.naukrinama.com/hi/job-alert-in-hindi/feed/");
-                case 1:
-                    return LatestJobs.newInstance(PrefUtils.getBaseURL(MainActivity.this)+"government-jobs/banking-jobs/feed/");
-                case 2:
-                    return LatestJobs.newInstance(PrefUtils.getBaseURL(MainActivity.this)+"government-jobs/railways-jobs/feed/");
-                case 3:
-                    return LatestJobs.newInstance(PrefUtils.getBaseURL(MainActivity.this)+"government-jobs/upsc-jobs/feed/");
-                case 4:
-                    return LatestJobs.newInstance(PrefUtils.getBaseURL(MainActivity.this)+"government-jobs/teaching-jobs/feed/");
-                default:
-                    return LatestJobs.newInstance(PrefUtils.getBaseURL(MainActivity.this)+"government-jobs/indian-army-jobs/");
+            if (PrefUtils.getLanguage(MainActivity.this) == 0) {
+                switch (position) {
+                    case 0:
+                        return Flipper.newInstance("https://www.naukrinama.com/city/jaipur-govt-jobs/feed/");
+                    case 1:
+                        return LatestJobs.newInstance("https://www.naukrinama.com/government-jobs/banking-jobs/feed/");
+                    case 2:
+                        return LatestJobs.newInstance("https://www.naukrinama.com/government-jobs/railways-jobs/feed/");
+                    case 3:
+                        return LatestJobs.newInstance("https://www.naukrinama.com/government-jobs/upsc-jobs/feed/");
+                    case 4:
+                        return LatestJobs.newInstance("https://www.naukrinama.com/government-jobs/teaching-jobs/feed/");
+                    default:
+                        return LatestJobs.newInstance("https://www.naukrinama.com/government-jobs/indian-army-jobs/feed/");
+                }
+            } else {
+                switch (position) {
+                    case 0:
+                        return Flipper.newInstance("https://www.naukrinama.com/hi/job-alert-in-hindi/feed/");
+                    case 1:
+                        return LatestJobs.newInstance("https://www.naukrinama.com/hi/sarkari-naukri/bank-bharti/feed/");
+                    case 2:
+                        return LatestJobs.newInstance("https://www.naukrinama.com/hi/sarkari-naukri/bhartiya-railway-bharti/feed/");
+                    case 3:
+                        return LatestJobs.newInstance("https://www.naukrinama.com/hi/sarkari-naukri/upsc-bharti/feed/");
+                    case 4:
+                        return LatestJobs.newInstance("https://www.naukrinama.com/hi/sarkari-naukri/shikshak-bharti/feed/");
+                    default:
+                        return LatestJobs.newInstance("https://www.naukrinama.com/hi/sarkari-naukri/bhartiya-thal-sena-bharti/feed/");
+                }
             }
 
         }
 
     }
-
-
-
-
-
-
-
-
 
 //end of main class
 }
