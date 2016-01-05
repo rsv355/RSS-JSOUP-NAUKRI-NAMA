@@ -27,6 +27,7 @@ import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
 import com.example.krishnakumar.rss_jsoup.Fragments.Flipper;
 import com.example.krishnakumar.rss_jsoup.Fragments.LatestJobs;
+import com.example.krishnakumar.rss_jsoup.helper.PrefUtils;
 import com.example.krishnakumar.rss_jsoup.model.NaukriData;
 
 import org.jsoup.Jsoup;
@@ -92,17 +93,17 @@ public class MainActivity extends AppCompatActivity {
         public Fragment getItem(int position) {
             switch (position) {
                 case 0:
-                    return Flipper.newInstance("https://www.naukrinama.com/job-alerts/feed/");
+                    return Flipper.newInstance("https://www.naukrinama.com/hi/job-alert-in-hindi/feed/");
                 case 1:
-                    return LatestJobs.newInstance("https://www.naukrinama.com/government-jobs/banking-jobs/feed/");
+                    return LatestJobs.newInstance(PrefUtils.getBaseURL(MainActivity.this)+"government-jobs/banking-jobs/feed/");
                 case 2:
-                    return LatestJobs.newInstance("https://www.naukrinama.com/government-jobs/railways-jobs/feed/");
+                    return LatestJobs.newInstance(PrefUtils.getBaseURL(MainActivity.this)+"government-jobs/railways-jobs/feed/");
                 case 3:
-                    return LatestJobs.newInstance("https://www.naukrinama.com/government-jobs/upsc-jobs/feed/");
+                    return LatestJobs.newInstance(PrefUtils.getBaseURL(MainActivity.this)+"government-jobs/upsc-jobs/feed/");
                 case 4:
-                    return LatestJobs.newInstance("https://www.naukrinama.com/government-jobs/teaching-jobs/feed/");
+                    return LatestJobs.newInstance(PrefUtils.getBaseURL(MainActivity.this)+"government-jobs/teaching-jobs/feed/");
                 default:
-                    return LatestJobs.newInstance("https://www.naukrinama.com/government-jobs/indian-army-jobs/");
+                    return LatestJobs.newInstance(PrefUtils.getBaseURL(MainActivity.this)+"government-jobs/indian-army-jobs/");
             }
 
         }

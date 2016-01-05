@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_gravity="center"
+    tools:context="com.example.krishnakumar.rss_jsoup.MainActivity">
+
+    <TextView
+        android:layout_marginTop="16dp"
+        android:textSize="16dp"
+        android:gravity="left"
+        android:layout_marginLeft="16dp"
+        android:layout_gravity="center"
+        android:text="Choose your Preferred language "
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/cardEnglish"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp">
+    <TextView
+        android:textSize="32dp"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:text="@string/lang_english"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/cardHindi"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp">
+        <TextView
+            android:textSize="32dp"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:text="@string/lang_hindi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </android.support.v7.widget.CardView>
+
+
+</LinearLayout>

@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Naukri Nama</string>
+
+    <string name="lang_english">ENGLISH</string>
+    <string name="lang_hindi">हिन्दी</string>
+
 </resources>
